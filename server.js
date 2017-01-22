@@ -12,9 +12,9 @@ hbs.registerPartials(__dirname + '/views/partials');
 app.set('view engine', 'hbs');
 
 // maintenance middleware
-app.use((req, res, next) => {
-  res.render('maintenance.hbs');
-});
+// app.use((req, res, next) => {
+//   res.render('maintenance.hbs');
+// });
 
 // set up middleware to host public files
 app.use(express.static(__dirname + '/public'));
@@ -69,6 +69,12 @@ app.get('/about', (req,res) => {
 app.get('/bad', (req,res) => {
   res.send({
     erroMessage: 'Unable to handle request'
+  });
+});
+
+app.get('/projects', (req, res) => {
+  res.render('projects.hbs', {
+    pageTitle: 'Projects page'
   });
 });
 
